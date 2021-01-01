@@ -9,6 +9,9 @@
 postgres-data
 node_modules
 
+node_modules/
+postgres-data/
+
 # testing
 /coverage
 
