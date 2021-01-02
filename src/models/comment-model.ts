@@ -8,14 +8,10 @@ export function CommentFactory (sequelize: Sequelize): CommentStatic {
             autoIncrement: true,
             primaryKey: true,
         },
-        email: {
+        text: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
         },
         createdAt: {
             type: DataTypes.DATE,

@@ -1,4 +1,7 @@
 import express, { Application } from "express";
+import { buildSchema } from 'graphql';
+import { graphqlHTTP } from 'express-graphql';
+const schema =  require('./graphql/schema')
 import bodyParser from "body-parser";
 import { dbConfig } from "./models";
 import { articles } from './routes/articles';
@@ -6,13 +9,13 @@ import { articles } from './routes/articles';
 const app: express.Application = express();
 const port: number = Number(process.env.PORT) || 3000;
 
-app.use('/articles', articles)
+// app.use('/articles', articles)
 
 app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/`);
 });
 
-export function expressApp () {    
+export function expressApp () {
 	dbConfig
 	  .authenticate().then(() => console.info("connected to db"))            
 	  .catch(() => {            
@@ -28,8 +31,11 @@ export function expressApp () {
 	 }
 	 
 	 app.use(bodyParser.json());
-	 app.use(bodyParser.urlencoded({ extended: true, limit: "5m" }));                
-	 app.use('/articles', articles)
+	 app.use(bodyParser.urlencoded({ extended: true, limit: "5m" }));
+	 app.use('/', graphqlHTTP({
+		schema: schema,
+		graphiql: true
+	  }));
 	  
 	  return app;
   }

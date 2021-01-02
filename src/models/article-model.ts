@@ -2,13 +2,13 @@ import { DataTypes, Sequelize } from 'sequelize';
 import { ArticleStatic } from '../types/api-rest';
 
 export function ArticleFactory (sequelize: Sequelize): ArticleStatic {
-    return <ArticleStatic>sequelize.define("skills", {
+    return <ArticleStatic>sequelize.define("article", {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        skill: {
+        text: {
             type: DataTypes.STRING,
             allowNull: false,
         },

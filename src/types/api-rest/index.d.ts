@@ -2,7 +2,7 @@ import { BuildOptions, Model } from "sequelize";
 
 export interface ArticleAttributes {
   id: number;
-  skill: string;
+  text: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -14,8 +14,7 @@ export type ArticleStatic = typeof Model & {
 
 export interface CommentAttributes {
 	id: number;
-	name: string;
-	email: string;
+	text: string;
 	createdAt?: Date;
 	updatedAt?: Date;
   }
