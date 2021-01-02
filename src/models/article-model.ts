@@ -1,8 +1,8 @@
 import { DataTypes, Sequelize } from 'sequelize';
-import { SkillsStatic } from '../types/api-rest';
+import { ArticleStatic } from '../types/api-rest';
 
-export function SkillsFactory (sequelize: Sequelize): SkillsStatic {
-    return <SkillsStatic>sequelize.define("skills", {
+export function ArticleFactory (sequelize: Sequelize): ArticleStatic {
+    return <ArticleStatic>sequelize.define("skills", {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

@@ -1,8 +1,8 @@
 import { DataTypes, Sequelize } from 'sequelize';
-import { UserStatic } from '../types/api-rest';
+import { CommentStatic } from '../types/api-rest';
 
-export function UserFactory (sequelize: Sequelize): UserStatic {
-    return <UserStatic>sequelize.define("users", {
+export function CommentFactory (sequelize: Sequelize): CommentStatic {
+    return <CommentStatic>sequelize.define("comments", {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

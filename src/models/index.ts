@@ -1,6 +1,6 @@
 import * as sequelize from 'sequelize';
-import {UserFactory} from "./user-model";
-import {SkillsFactory} from "./skills-model";
+import {CommentFactory} from "./comment-model";
+import {ArticleFactory} from "./article-model";
 
 export const dbConfig = new sequelize.Sequelize(
     (process.env.DB_NAME = "rest_resume_api"),
@@ -19,7 +19,7 @@ export const dbConfig = new sequelize.Sequelize(
     }
 );
 // THIS ONES ARE THE ONES YOU NEED TO USE ON YOUR CONTROLLERS
-export const User = UserFactory(dbConfig)
+export const Comment = CommentFactory(dbConfig)
 
 // THIS ONES ARE THE ONES YOU NEED TO USE ON YOUR CONTROLLERS
-export const Skills = SkillsFactory(dbConfig)
+export const Article = ArticleFactory(dbConfig)
