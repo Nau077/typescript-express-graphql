@@ -23,5 +23,14 @@ export function CommentFactory (sequelize: Sequelize): CommentStatic {
             allowNull: false,
             defaultValue: DataTypes.NOW,
         },
+        articles_id_fkey: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'articles',
+                key: 'id'
+            },
+            onUpdate: 'cascade',
+            onDelete: 'cascade'
+        },        
     });
 }

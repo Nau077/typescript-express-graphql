@@ -1,5 +1,4 @@
 import express, { Application } from "express";
-import { buildSchema } from 'graphql';
 import { graphqlHTTP } from 'express-graphql';
 const schema =  require('./graphql/schema')
 import bodyParser from "body-parser";
@@ -8,12 +7,6 @@ import { articles } from './routes/articles';
 
 const app: express.Application = express();
 const port: number = Number(process.env.PORT) || 3000;
-
-// app.use('/articles', articles)
-
-app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}/`);
-});
 
 export function expressApp () {
 	dbConfig
@@ -32,10 +25,19 @@ export function expressApp () {
 	 
 	 app.use(bodyParser.json());
 	 app.use(bodyParser.urlencoded({ extended: true, limit: "5m" }));
-	 app.use('/', graphqlHTTP({
-		schema: schema,
-		graphiql: true
-	  }));
 	  
 	  return app;
   }
+
+  expressApp()
+ 
+ app.use('/articles', articles)
+ 
+ app.use('/', graphqlHTTP({
+	schema: schema,
+	// rootValue: root,
+	graphiql: true
+  }));
+  app.listen(port, () => {
+    console.log(`Listening at http://localhost:${port}/`);
+});

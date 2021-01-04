@@ -3,7 +3,7 @@ import {CommentFactory} from "./comment-model";
 import {ArticleFactory} from "./article-model";
 
 export const dbConfig = new sequelize.Sequelize(
-    (process.env.DB_NAME = "rest_resume_api"),
+    (process.env.DB_NAME = "restgrdb"),
     (process.env.DB_USER = "john"),
     (process.env.DB_PASSWORD = "password"),
     {
